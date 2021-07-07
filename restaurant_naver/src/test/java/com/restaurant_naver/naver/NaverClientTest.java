@@ -1,5 +1,6 @@
 package com.restaurant_naver.naver;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -19,9 +20,10 @@ public class NaverClientTest {
 		var search = new SearchLocalReq();
 		search.setQuery("갈비집");
 		
-		var result = naverClient.searhLocal(search);
+		var result = naverClient.searchLocal(search);
 		
 		System.out.println(result);
+		Assertions.assertNotNull(result.getItems().stream().findFirst().get().getCategory());
 		
 	}
 	
